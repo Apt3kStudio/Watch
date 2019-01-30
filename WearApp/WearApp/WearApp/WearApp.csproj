@@ -88,34 +88,29 @@
   <ItemGroup>
     <AndroidResource Include="Resources\values-round\strings.xml" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <PackageReference Include="Google.Apis">
-      <Version>1.37.0</Version>
-    </PackageReference>
+    <Folder Include="Resources\drawable\" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Xamarin.Android.Support.Wear" Version="27.0.2.1" />
     <PackageReference Include="Xamarin.Android.Support.Core.Utils" Version="27.0.2.1" />
     <PackageReference Include="Xamarin.Android.Support.Fragment" Version="27.0.2.1" />
     <PackageReference Include="Xamarin.Android.Support.Media.Compat" Version="27.0.2.1" />
     <PackageReference Include="Xamarin.Android.Wear" Version="2.2.0" />
     <PackageReference Include="Xamarin.GooglePlayServices.Location">
-      <Version>70.1501.0-preview2</Version>
+      <Version>60.1142.1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.GooglePlayServices.Wearable">
-      <Version>70.1501.0-preview2</Version>
+      <Version>60.1142.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="menu1.xml" />
-    <AndroidResource Include="Resources\drawable\round_add_alert_black_18dp.png">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\round_notifications_active_black_18dp.png">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\ic_add_alert_black_18dp.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_add_alert_black_18dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_add_alert_black_18dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_add_alert_black_18dp.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_add_alert_black_18dp.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

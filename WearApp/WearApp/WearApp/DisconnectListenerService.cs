@@ -14,16 +14,14 @@ namespace WearApp
 
 		public override void OnPeerDisconnected (INode p0)
 		{
-#pragma warning disable CS0618 // Type or member is obsolete
-            Notification.Builder notificationBuilder = new Notification.Builder(this);
-#pragma warning restore CS0618 // Type or member is obsolete
-                              //.SetContentTitle ("Forgetting Something?")
-                              //.SetContentText ("You may have left your phone behind.")
-                              //.SetVibrate (new long[]{ 0, 200 })
-                              //.SetSmallIcon (Resource.Drawable.ic_launcher)
-                              //.SetLocalOnly (true)
-                              //.SetPriority ((int)NotificationPriority.Max);
-            Notification card = notificationBuilder.Build ();
+			Notification.Builder notificationBuilder = new Notification.Builder (this)
+				.SetContentTitle ("Forgetting Something?")
+				.SetContentText ("You may have left your phone behind.")
+				.SetVibrate (new long[]{ 0, 200 })
+				.SetSmallIcon (Resource.Drawable.ic_add_alert_black_18dp)
+				.SetLocalOnly (true)
+				.SetPriority ((int)NotificationPriority.Max);
+			Notification card = notificationBuilder.Build ();
 			((NotificationManager)GetSystemService (NotificationService))
 				.Notify (FORGOT_PHONE_NOTIFICATION_ID, card);
 		}

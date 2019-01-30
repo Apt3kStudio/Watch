@@ -64,7 +64,7 @@ namespace WearApp
 					result.Close();
 					alarmOn = !alarmOn;
 					string notificationText = alarmOn ? GetString(Resource.String.turn_alarm_on) : GetString(Resource.String.turn_alarm_off);
-					//MainActivity.UpdateNotification (this, notificationText);
+					MainActivity.UpdateNotification (this, notificationText);
 				}
 
 				var putDataMapRequest = PutDataMapRequest.Create (PATH_SOUND_ALARM);
