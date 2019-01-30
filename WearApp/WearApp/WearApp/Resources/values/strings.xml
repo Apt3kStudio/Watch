@@ -1,5 +1,9 @@
 <resources>
-    <string name="app_name">WearApp</string>
+  <string name="app_name">2nd Eye</string>
+  <string name="left_phone_title">Forgetting something?</string>
+  <string name="left_phone_content">You may have left your phone behind.</string>
+  <string name="turn_alarm_on">Tap to sound an alarm on phone.</string>
+  <string name="turn_alarm_off">Tap to stop the alarm.</string>
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.
