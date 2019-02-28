@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="DisconnectListenerService.cs" />
     <Compile Include="FindPhoneService.cs" />
+    <Compile Include="LocalNotificationBuilder.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,7 +63,9 @@
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
-    <None Include="Properties\AndroidManifest.xml" />
+    <None Include="Properties\AndroidManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\strings.xml" />
@@ -105,7 +108,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="menu1.xml" />
+    <Content Include="menu1.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <AndroidResource Include="Resources\drawable-mdpi\ic_add_alert_black_18dp.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_add_alert_black_18dp.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_add_alert_black_18dp.png" />

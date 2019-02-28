@@ -30,14 +30,32 @@ namespace WearApp
 
 		public override void OnCreate()
 		{
-			base.OnCreate ();
-			google_api_client = new GoogleApiClient.Builder (this)
-				.AddApi (WearableClass.API)
-				.AddConnectionCallbacks (this)
-				.AddOnConnectionFailedListener (this)
-				.Build ();
-		}
+            try
+            {
+                base.OnCreate();
+                google_api_client = new GoogleApiClient.Builder(this)
+                    .AddApi(WearableClass.API)
+                    .AddConnectionCallbacks(this)
+                    .AddOnConnectionFailedListener(this)
+                    .Build();
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
+
+			
+		}
+        public void sendData(MainActivity mainActivity)
+        {
+            google_api_client = new GoogleApiClient.Builder(mainActivity)
+                .AddApi(WearableClass.API)
+                //.AddConnectionCallbacks(mainActivity)
+               // .AddOnConnectionFailedListener(mainActivity)
+                .Build();
+            OnHandleIntent(new Intent());
+        }
 		protected override void OnHandleIntent(Intent intent)
 		{
 			google_api_client.BlockingConnect (CONNECTION_TIME_OUT_MS, TimeUnit.Milliseconds);
@@ -47,8 +65,9 @@ namespace WearApp
 
 			if (google_api_client.IsConnected) {
 				bool alarmOn = false;
-				if (intent.Action == ACTION_TOGGLE_ALARM) {
-					var result = WearableClass.DataApi.GetDataItems (google_api_client).Await ().JavaCast<DataItemBuffer>();
+				if (intent.Action == ACTION_TOGGLE_ALARM)
+                {
+					var result = WearableClass.DataApi.GetDataItems(google_api_client).Await().JavaCast<DataItemBuffer>();
 					if (result.Status.IsSuccess) {
 						if (result.Count == 1) {
 							alarmOn = DataMap.FromByteArray ((result.Get(0).JavaCast<IDataItem>()).GetData ()).GetBoolean (FIELD_ALARM_ON, false);
@@ -69,17 +88,17 @@ namespace WearApp
 
 				var putDataMapRequest = PutDataMapRequest.Create (PATH_SOUND_ALARM);
 				putDataMapRequest.DataMap.PutBoolean (FIELD_ALARM_ON, alarmOn);
-				WearableClass.DataApi.PutDataItem (google_api_client, putDataMapRequest.AsPutDataRequest ()).Await ();
+				WearableClass.DataApi.PutDataItem(google_api_client, putDataMapRequest.AsPutDataRequest()).Await ();
 			} else {
 				Log.Error (TAG, "Failed to toggle alarm on phone - Client disconnected from Google Play Services");
 			}
-			google_api_client.Disconnect ();
+			google_api_client.Disconnect();
 		}
 
-		public void OnConnected(Bundle connectionHint)
-		{
-		}
-		public void OnConnectionSuspended(int cause)
+        public void OnConnected(Bundle connectionHint)
+        {
+        }
+        public void OnConnectionSuspended(int cause)
 		{
 		}
 		public void OnConnectionFailed(ConnectionResult result) 
