@@ -31,6 +31,6 @@ namespace WearApp
 			((NotificationManager)GetSystemService (NotificationService))
 				.Cancel (FORGOT_PHONE_NOTIFICATION_ID);
 		}
-	}
+    }
 }
 
