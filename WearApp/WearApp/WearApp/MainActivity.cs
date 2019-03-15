@@ -23,12 +23,15 @@ using Android.Gms.Auth.Api.SignIn;
 using Android.Gms.Auth.Api;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Android.Graphics;
 
 namespace WearApp
 {
     [Activity(Label = "@string/app_name", MainLauncher = true)]
     public class MainActivity : WearableActivity        
-    {   
+    {
+        public int FORGOT_PHONE_NOTIFICATION_ID = 1;
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);              
@@ -38,6 +41,19 @@ namespace WearApp
             Button btnFlashTrigger = FindViewById<Button>(Resource.Id.FlashTrigger);
             Button btnVibTrigger = FindViewById<Button>(Resource.Id.VibTrigger);
             Communicator cm = new Communicator(this);
+
+
+            Notification.Builder notificationBuilder = new Notification.Builder(this, "")
+                    .SetContentTitle("Forgetting Something?")
+                    .SetContentText("You may have left your phone behind.")
+                    //.SetVibrate(new long[] { 0, 200 })
+                    .SetSmallIcon(Resource.Drawable.ic_add_alert_black_18dp)
+                    .SetLocalOnly(true);
+            //.SetPriority((int)NotificationPriority.Max);
+            Notification card = notificationBuilder.Build();
+            ((NotificationManager)GetSystemService(NotificationService))
+                .Notify(FORGOT_PHONE_NOTIFICATION_ID, card);
+
             btnSoundTrigger.Click += delegate
             {                                          
                 cm.SendMessage("alarm");
@@ -50,7 +66,47 @@ namespace WearApp
             };
             btnVibTrigger.Click += delegate
             {
-                cm.SendMessage("vib");
+
+                cm.SendMessage("option");
+                //NotificationManager notificationManager = (NotificationManager)GetSystemService(NotificationService);
+                //Notification notification = new Notification.Builder(this)
+                //        .SetLargeIcon(BitmapFactory.DecodeResource(Resources, Resource.Mipmap.ic_launcher))
+                //        .SetSmallIcon(Resource.Mipmap.ic_launcher)
+                //        .SetContentTitle("title")
+                //        .SetContentText("contentText")
+                //        //.SetPriority(Notification.PriorityHigh)
+                //        //.SetContentIntent(pendingIntent)
+                //        .SetAutoCancel(true)
+                //        .Build();
+                //notificationManager.Notify(1, notification);
+
+
+                // Notification.Builder noti1 = new Notification.Builder(this)
+                //// Notification noti = new Notification.Builder(this,"")
+                //  .SetContentTitle("Forgetting Something?")
+                //   .SetContentText("You may have left your phone behind.")
+                // .SetContentText("subject")
+                // .SetSmallIcon(Resource.Drawable.ic_add_alert_black_18dp)                    
+                //   .SetLocalOnly(true)
+                // //.SetPriority((int)NotificationPriority.Max);
+                // //.SetLargeIcon(Resource.Drawable.Icon)
+                // .Build();
+                //Notification.Builder notificationBuilder = new Notification.Builder(this, "")
+                //     .SetContentTitle("Forgetting Something?")
+                //     .SetContentText("You may have left your phone behind.")
+                //     //.SetVibrate(new long[] { 0, 200 })
+                //     .SetSmallIcon(Resource.Drawable.ic_add_alert_black_18dp)
+                //     .SetLocalOnly(true);
+                //     //.SetPriority((int)NotificationPriority.Max);
+                //Notification card = notificationBuilder.Build();
+                //((NotificationManager)GetSystemService(NotificationService))
+                //    .Notify(FORGOT_PHONE_NOTIFICATION_ID, card);
+                //Notification card = noti.Build();
+                //((NotificationManager)GetSystemService(NotificationService))
+                //    .Notify(FORGOT_PHONE_NOTIFICATION_ID, noti);
+
+
+                //cm.SendMessage("vib");
                 //cm.DataReceived += Cm_DataReceived;
             };
             SetAmbientEnabled();
