@@ -1,0 +1,163 @@
+﻿using System;
+
+using Android.App;
+using Android.Content;
+using Android.OS;
+using Android.Util;
+using Android.Runtime;
+using Android.Gms.Common;
+using Android.Gms.Common.Apis;
+using Android.Gms.Wearable;
+
+using Java.Util.Concurrent;
+using System.Threading.Tasks;
+using System.Text;
+using System.Collections.Generic;
+using Android.Gms.Gcm;
+
+namespace WearApp
+{
+
+    public class Communicator : Java.Lang.Object, IMessageApiMessageListener, IDataApiDataListener, ICapabilityApiCapabilityListener, INodeApiNodeListener
+    {
+        readonly GoogleApiClient client;
+        const string path = "/communicator";
+        string capabilityName = "my_capability";
+        // Initializing GoogleApiClient
+        Context _context;
+        public Communicator(Context context)
+        {
+            _context = context;
+                   client = new GoogleApiClient.Builder(context)                
+                .AddApi(WearableClass.API)
+                .Build();
+            client.Connect();
+           var capabilitiesTask = WearableClass.CapabilityApi.GetAllCapabilities(client, CapabilityApi.FilterReachable);
+           WearableClass.NodeApi.AddListener(client, this);
+
+
+
+            WearableClass.CapabilityApi.AddLocalCapability(client, capabilityName);
+
+            var result = WearableClass.CapabilityApi.GetCapability(client, capabilityName, CapabilityApi.FilterReachable);
+
+        }
+
+        // Connecting client when we want it (usually on Activity.OnResume)
+        public void Resume()
+        {
+            if (!client.IsConnected)
+            {
+                client.Connect();
+                WearableClass.MessageApi.AddListener(client, this);
+                WearableClass.DataApi.AddListener(client, this);
+                WearableClass.CapabilityApi.AddLocalCapability(client, capabilityName);
+
+                var result = WearableClass.CapabilityApi.GetCapability(client, capabilityName, CapabilityApi.FilterReachable);
+            }
+        }
+
+        // Disconnecting client when we want it (usually on Activity.OnPause)
+        public void Pause()
+        {
+            if (client != null && client.IsConnected)
+            {
+                client.Disconnect();
+                WearableClass.MessageApi.RemoveListener(client, this);
+                WearableClass.DataApi.RemoveListener(client, this);
+            }
+        }
+
+        // Sending message via MessageApi
+        public void SendMessage(string message)
+        {
+            client.Connect();
+            System.Threading.Tasks.Task.Run(() =>
+            {
+                foreach (var node in Nodes())
+                {
+                    // APP NOT GETS HERE, BECAUSE Nodes() RETURNS NOTHING
+                    var bytes = Encoding.Default.GetBytes(message);
+                    var result = WearableClass.MessageApi.SendMessage(client, node.Id, path, bytes).Await();
+                    var success = result.JavaCast<IMessageApiSendMessageResult>().Status.IsSuccess ? "Ok." : "Failed!";
+                    Log.Info("my_log", "Communicator: Sending message " + message + "... " + success);
+                    // client.Disconnect();
+                }
+            });
+        }
+
+        // Sending data via DataApi
+        public void SendData(DataMap dataMap)
+        {
+            System.Threading.Tasks.Task.Run(() =>
+            {
+                try
+                {
+
+
+                    var request = PutDataMapRequest.Create(path);
+                    request.DataMap.PutAll(dataMap);
+                    var result = WearableClass.DataApi.PutDataItem(client, request.AsPutDataRequest()).Await();
+                    var success = result.JavaCast<IDataApiDataItemResult>().Status.IsSuccess ? "Ok." : "Failed!";
+                    Log.Info("my_log", "Communicator: Sending data map " + dataMap + "... " + success);
+                }
+                catch (Exception ex)
+                {
+
+                    throw;
+                }
+            });
+        }
+
+        // Implementing IMessageApiMessageListener interface
+        // On message received we want invoke event
+        public void OnMessageReceived(IMessageEvent messageEvent)
+        {
+            var message = Encoding.Default.GetString(messageEvent.GetData());
+            Log.Info("my_log", "Communicator: Message received \"" + message + "\"");
+            MessageReceived(message);
+        }
+
+        // Implementing IDataApiDataListener interface
+        // On data changed we want invoke event
+        public void OnDataChanged(DataEventBuffer p0)
+        {
+            Log.Info("my_log", "Communicator: Data changed (" + p0.Count + " data events)");
+            for (var i = 0; i < p0.Count; i++)
+            {
+                var dataEvent = p0.Get(i).JavaCast<IDataEvent>();
+                if (dataEvent.Type == DataEvent.TypeChanged && dataEvent.DataItem.Uri.Path == path)
+                    DataReceived(DataMapItem.FromDataItem(dataEvent.DataItem).DataMap);
+            }
+        }
+
+        // Events for incoming message or update data
+        public event Action<string> MessageReceived = delegate { };
+        public event Action<DataMap> DataReceived = delegate { };
+
+        IList<INode> Nodes()
+        {
+            
+            var result = WearableClass.NodeApi.GetConnectedNodes(client).Await();
+            return result.JavaCast<INodeApiGetConnectedNodesResult>().Nodes;
+        }
+       
+        public void OnCapabilityChanged(ICapabilityInfo capabilityInfo)
+        {
+            Log.Info("Spidey", "OnCapabilityChanged" + capabilityInfo.Name);
+        }
+
+        public void OnPeerConnected(INode peer)
+        {
+            Log.Info("Spidey", "Connected"+ peer.DisplayName + "id:"+peer.Id);
+        }
+
+        public void OnPeerDisconnected(INode peer)
+        {
+            Log.Info("Spidey", "Disconnected" + peer.DisplayName + "id:" + peer.Id);
+          
+        }
+    }
+
+}
+
