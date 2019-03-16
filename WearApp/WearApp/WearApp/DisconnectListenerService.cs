@@ -1,6 +1,5 @@
 ﻿using System;
 using Android.App;
-using Android.Content;
 using Android.Gms.Wearable;
 
 namespace WearApp
@@ -13,15 +12,15 @@ namespace WearApp
 
             const int FORGOT_PHONE_NOTIFICATION_ID = 1;
 
-            public void OnPeerDisconnected(Context context)
+            public void OnPeerDisconnected()
             {
-            Notification.Builder notificationBuilder = new Notification.Builder(context, "")
-                .SetContentTitle("Forgetting Something?")
-                .SetContentText("You may have left your phone behind.")
-                //.SetVibrate(new long[] { 0, 200 })
-                .SetSmallIcon(Resource.Drawable.ic_add_alert_black_18dp)
-                .SetLocalOnly(true);
-                    //.SetPriority((int)NotificationPriority.Max);
+                Notification.Builder notificationBuilder = new Notification.Builder(this,"")
+                    .SetContentTitle("Forgetting Something?")
+                    .SetContentText("You may have left your phone behind.")
+                    //.SetVibrate(new long[] { 0, 200 })
+                    .SetSmallIcon(Resource.Drawable.ic_add_alert_black_18dp)
+                    .SetLocalOnly(true)
+                    .SetPriority((int)NotificationPriority.Max);
                 Notification card = notificationBuilder.Build();
                 ((NotificationManager)GetSystemService(NotificationService))
                     .Notify(FORGOT_PHONE_NOTIFICATION_ID, card);

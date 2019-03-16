@@ -42,72 +42,17 @@ namespace WearApp
             Button btnVibTrigger = FindViewById<Button>(Resource.Id.VibTrigger);
             Communicator cm = new Communicator(this);
 
-
-            Notification.Builder notificationBuilder = new Notification.Builder(this, "")
-                    .SetContentTitle("Forgetting Something?")
-                    .SetContentText("You may have left your phone behind.")
-                    //.SetVibrate(new long[] { 0, 200 })
-                    .SetSmallIcon(Resource.Drawable.ic_add_alert_black_18dp)
-                    .SetLocalOnly(true);
-            //.SetPriority((int)NotificationPriority.Max);
-            Notification card = notificationBuilder.Build();
-            ((NotificationManager)GetSystemService(NotificationService))
-                .Notify(FORGOT_PHONE_NOTIFICATION_ID, card);
-
             btnSoundTrigger.Click += delegate
             {                                          
-                cm.SendMessage("alarm");
-             //   cm.DataReceived += Cm_DataReceived; 
+                cm.SendMessage("option1");             
             };
             btnFlashTrigger.Click += delegate
             {
-                cm.SendMessage("flash");
-               // cm.DataReceived += Cm_DataReceived;
+                cm.SendMessage("option2");              
             };
             btnVibTrigger.Click += delegate
             {
-
-                cm.SendMessage("option");
-                //NotificationManager notificationManager = (NotificationManager)GetSystemService(NotificationService);
-                //Notification notification = new Notification.Builder(this)
-                //        .SetLargeIcon(BitmapFactory.DecodeResource(Resources, Resource.Mipmap.ic_launcher))
-                //        .SetSmallIcon(Resource.Mipmap.ic_launcher)
-                //        .SetContentTitle("title")
-                //        .SetContentText("contentText")
-                //        //.SetPriority(Notification.PriorityHigh)
-                //        //.SetContentIntent(pendingIntent)
-                //        .SetAutoCancel(true)
-                //        .Build();
-                //notificationManager.Notify(1, notification);
-
-
-                // Notification.Builder noti1 = new Notification.Builder(this)
-                //// Notification noti = new Notification.Builder(this,"")
-                //  .SetContentTitle("Forgetting Something?")
-                //   .SetContentText("You may have left your phone behind.")
-                // .SetContentText("subject")
-                // .SetSmallIcon(Resource.Drawable.ic_add_alert_black_18dp)                    
-                //   .SetLocalOnly(true)
-                // //.SetPriority((int)NotificationPriority.Max);
-                // //.SetLargeIcon(Resource.Drawable.Icon)
-                // .Build();
-                //Notification.Builder notificationBuilder = new Notification.Builder(this, "")
-                //     .SetContentTitle("Forgetting Something?")
-                //     .SetContentText("You may have left your phone behind.")
-                //     //.SetVibrate(new long[] { 0, 200 })
-                //     .SetSmallIcon(Resource.Drawable.ic_add_alert_black_18dp)
-                //     .SetLocalOnly(true);
-                //     //.SetPriority((int)NotificationPriority.Max);
-                //Notification card = notificationBuilder.Build();
-                //((NotificationManager)GetSystemService(NotificationService))
-                //    .Notify(FORGOT_PHONE_NOTIFICATION_ID, card);
-                //Notification card = noti.Build();
-                //((NotificationManager)GetSystemService(NotificationService))
-                //    .Notify(FORGOT_PHONE_NOTIFICATION_ID, noti);
-
-
-                //cm.SendMessage("vib");
-                //cm.DataReceived += Cm_DataReceived;
+                cm.SendMessage("option3");                
             };
             SetAmbientEnabled();
         }
