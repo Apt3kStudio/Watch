@@ -75,6 +75,9 @@ namespace WearApp
 		public partial class Array
 		{
 			
+			// aapt resource value: 0x7f0b0002
+			public const int android_wear_capabilities = 2131427330;
+			
 			// aapt resource value: 0x7f0b0001
 			public const int circular_progress_layout_color_scheme_colors = 2131427329;
 			
@@ -1108,6 +1111,9 @@ namespace WearApp
 			// aapt resource value: 0x7f0d002b
 			public const int drawer_view_edge_size = 2131558443;
 			
+			// aapt resource value: 0x7f0d006f
+			public const int emoji_size = 2131558511;
+			
 			// aapt resource value: 0x7f0d0053
 			public const int fastscroll_default_thickness = 2131558483;
 			
@@ -1206,6 +1212,9 @@ namespace WearApp
 			
 			// aapt resource value: 0x7f0d0036
 			public const int screen_percentage_15 = 2131558454;
+			
+			// aapt resource value: 0x7f0d0070
+			public const int title_size = 2131558512;
 			
 			// aapt resource value: 0x7f0d0037
 			public const int wearable_drawer_view_elevation = 2131558455;
@@ -1404,106 +1413,124 @@ namespace WearApp
 			public const int ic_cc_settings_button_top = 2130837542;
 			
 			// aapt resource value: 0x7f020027
-			public const int ic_expand_less_white_22 = 2130837543;
+			public const int ic_earth_black_24dp = 2130837543;
 			
 			// aapt resource value: 0x7f020028
-			public const int ic_expand_more_white_22 = 2130837544;
+			public const int ic_edit_black_24dp = 2130837544;
 			
 			// aapt resource value: 0x7f020029
-			public const int ic_full_cancel = 2130837545;
+			public const int ic_expand_less_white_22 = 2130837545;
 			
 			// aapt resource value: 0x7f02002a
-			public const int ic_full_sad = 2130837546;
+			public const int ic_expand_more_white_22 = 2130837546;
 			
 			// aapt resource value: 0x7f02002b
-			public const int ic_more_horiz_24dp_wht = 2130837547;
+			public const int ic_full_cancel = 2130837547;
 			
 			// aapt resource value: 0x7f02002c
-			public const int ic_more_vert_24dp_wht = 2130837548;
+			public const int ic_full_sad = 2130837548;
 			
 			// aapt resource value: 0x7f02002d
-			public const int notification_action_background = 2130837549;
+			public const int ic_moon_black_24dp = 2130837549;
 			
 			// aapt resource value: 0x7f02002e
-			public const int notification_bg = 2130837550;
+			public const int ic_more_horiz_24dp_wht = 2130837550;
 			
 			// aapt resource value: 0x7f02002f
-			public const int notification_bg_low = 2130837551;
+			public const int ic_more_vert_24dp_wht = 2130837551;
 			
 			// aapt resource value: 0x7f020030
-			public const int notification_bg_low_normal = 2130837552;
+			public const int ic_settings_black_24dp = 2130837552;
 			
 			// aapt resource value: 0x7f020031
-			public const int notification_bg_low_pressed = 2130837553;
+			public const int ic_share_black_24dp = 2130837553;
 			
 			// aapt resource value: 0x7f020032
-			public const int notification_bg_normal = 2130837554;
+			public const int ic_sun_black_24dp = 2130837554;
 			
 			// aapt resource value: 0x7f020033
-			public const int notification_bg_normal_pressed = 2130837555;
+			public const int notification_action_background = 2130837555;
 			
 			// aapt resource value: 0x7f020034
-			public const int notification_icon_background = 2130837556;
-			
-			// aapt resource value: 0x7f020047
-			public const int notification_template_icon_bg = 2130837575;
-			
-			// aapt resource value: 0x7f020048
-			public const int notification_template_icon_low_bg = 2130837576;
+			public const int notification_bg = 2130837556;
 			
 			// aapt resource value: 0x7f020035
-			public const int notification_tile_bg = 2130837557;
+			public const int notification_bg_low = 2130837557;
 			
 			// aapt resource value: 0x7f020036
-			public const int notify_panel_notification_icon_bg = 2130837558;
+			public const int notification_bg_low_normal = 2130837558;
 			
 			// aapt resource value: 0x7f020037
-			public const int open_on_phone = 2130837559;
+			public const int notification_bg_low_pressed = 2130837559;
 			
 			// aapt resource value: 0x7f020038
-			public const int open_on_phone_animation = 2130837560;
+			public const int notification_bg_normal = 2130837560;
 			
 			// aapt resource value: 0x7f020039
-			public const int preference_wrapped_icon = 2130837561;
+			public const int notification_bg_normal_pressed = 2130837561;
 			
 			// aapt resource value: 0x7f02003a
-			public const int ws_action_item_background = 2130837562;
+			public const int notification_icon_background = 2130837562;
+			
+			// aapt resource value: 0x7f02004d
+			public const int notification_template_icon_bg = 2130837581;
+			
+			// aapt resource value: 0x7f02004e
+			public const int notification_template_icon_low_bg = 2130837582;
 			
 			// aapt resource value: 0x7f02003b
-			public const int ws_action_item_icon_background = 2130837563;
+			public const int notification_tile_bg = 2130837563;
 			
 			// aapt resource value: 0x7f02003c
-			public const int ws_ic_expand_less_white_22 = 2130837564;
+			public const int notify_panel_notification_icon_bg = 2130837564;
 			
 			// aapt resource value: 0x7f02003d
-			public const int ws_ic_expand_more_white_22 = 2130837565;
+			public const int open_on_phone = 2130837565;
 			
 			// aapt resource value: 0x7f02003e
-			public const int ws_ic_more_horiz_24dp_wht = 2130837566;
+			public const int open_on_phone_animation = 2130837566;
 			
 			// aapt resource value: 0x7f02003f
-			public const int ws_ic_more_vert_24dp_wht = 2130837567;
+			public const int preference_wrapped_icon = 2130837567;
 			
 			// aapt resource value: 0x7f020040
-			public const int ws_switch_thumb_material_anim = 2130837568;
+			public const int ws_action_item_background = 2130837568;
 			
 			// aapt resource value: 0x7f020041
-			public const int ws_switch_thumb_mtrl_14w = 2130837569;
+			public const int ws_action_item_icon_background = 2130837569;
 			
 			// aapt resource value: 0x7f020042
-			public const int ws_switch_thumb_mtrl_15w = 2130837570;
+			public const int ws_ic_expand_less_white_22 = 2130837570;
 			
 			// aapt resource value: 0x7f020043
-			public const int ws_switch_thumb_mtrl_16w = 2130837571;
+			public const int ws_ic_expand_more_white_22 = 2130837571;
 			
 			// aapt resource value: 0x7f020044
-			public const int ws_switch_thumb_mtrl_17w = 2130837572;
+			public const int ws_ic_more_horiz_24dp_wht = 2130837572;
 			
 			// aapt resource value: 0x7f020045
-			public const int ws_switch_thumb_mtrl_18w = 2130837573;
+			public const int ws_ic_more_vert_24dp_wht = 2130837573;
 			
 			// aapt resource value: 0x7f020046
-			public const int ws_switch_track_mtrl = 2130837574;
+			public const int ws_switch_thumb_material_anim = 2130837574;
+			
+			// aapt resource value: 0x7f020047
+			public const int ws_switch_thumb_mtrl_14w = 2130837575;
+			
+			// aapt resource value: 0x7f020048
+			public const int ws_switch_thumb_mtrl_15w = 2130837576;
+			
+			// aapt resource value: 0x7f020049
+			public const int ws_switch_thumb_mtrl_16w = 2130837577;
+			
+			// aapt resource value: 0x7f02004a
+			public const int ws_switch_thumb_mtrl_17w = 2130837578;
+			
+			// aapt resource value: 0x7f02004b
+			public const int ws_switch_thumb_mtrl_18w = 2130837579;
+			
+			// aapt resource value: 0x7f02004c
+			public const int ws_switch_track_mtrl = 2130837580;
 			
 			static Drawable()
 			{
@@ -1648,23 +1675,29 @@ namespace WearApp
 			// aapt resource value: 0x7f0f003f
 			public const int VibTrigger = 2131689535;
 			
-			// aapt resource value: 0x7f0f004c
-			public const int action0 = 2131689548;
+			// aapt resource value: 0x7f0f0052
+			public const int action0 = 2131689554;
 			
-			// aapt resource value: 0x7f0f0049
-			public const int action_container = 2131689545;
+			// aapt resource value: 0x7f0f004f
+			public const int action_container = 2131689551;
+			
+			// aapt resource value: 0x7f0f0056
+			public const int action_divider = 2131689558;
+			
+			// aapt resource value: 0x7f0f0084
+			public const int action_edit = 2131689604;
 			
 			// aapt resource value: 0x7f0f0050
-			public const int action_divider = 2131689552;
+			public const int action_image = 2131689552;
 			
-			// aapt resource value: 0x7f0f004a
-			public const int action_image = 2131689546;
+			// aapt resource value: 0x7f0f0085
+			public const int action_share = 2131689605;
 			
-			// aapt resource value: 0x7f0f004b
-			public const int action_text = 2131689547;
+			// aapt resource value: 0x7f0f0051
+			public const int action_text = 2131689553;
 			
-			// aapt resource value: 0x7f0f005a
-			public const int actions = 2131689562;
+			// aapt resource value: 0x7f0f0060
+			public const int actions = 2131689568;
 			
 			// aapt resource value: 0x7f0f000f
 			public const int adjust_height = 2131689487;
@@ -1672,14 +1705,14 @@ namespace WearApp
 			// aapt resource value: 0x7f0f0010
 			public const int adjust_width = 2131689488;
 			
-			// aapt resource value: 0x7f0f0042
-			public const int alertTitle = 2131689538;
+			// aapt resource value: 0x7f0f0047
+			public const int alertTitle = 2131689543;
 			
 			// aapt resource value: 0x7f0f0017
 			public const int all = 2131689495;
 			
-			// aapt resource value: 0x7f0f0041
-			public const int animatedWrapperContainer = 2131689537;
+			// aapt resource value: 0x7f0f0046
+			public const int animatedWrapperContainer = 2131689542;
 			
 			// aapt resource value: 0x7f0f0032
 			public const int async = 2131689522;
@@ -1693,14 +1726,17 @@ namespace WearApp
 			// aapt resource value: 0x7f0f0018
 			public const int bottom = 2131689496;
 			
+			// aapt resource value: 0x7f0f0044
+			public const int bottom_action_drawer = 2131689540;
+			
 			// aapt resource value: 0x7f0f001c
 			public const int butt = 2131689500;
 			
 			// aapt resource value: 0x7f0f0036
 			public const int buttonPanel = 2131689526;
 			
-			// aapt resource value: 0x7f0f004d
-			public const int cancel_action = 2131689549;
+			// aapt resource value: 0x7f0f0053
+			public const int cancel_action = 2131689555;
 			
 			// aapt resource value: 0x7f0f0021
 			public const int center = 2131689505;
@@ -1711,8 +1747,8 @@ namespace WearApp
 			// aapt resource value: 0x7f0f0026
 			public const int center_vertical = 2131689510;
 			
-			// aapt resource value: 0x7f0f0055
-			public const int chronometer = 2131689557;
+			// aapt resource value: 0x7f0f005b
+			public const int chronometer = 2131689563;
 			
 			// aapt resource value: 0x7f0f0027
 			public const int clip_horizontal = 2131689511;
@@ -1720,8 +1756,14 @@ namespace WearApp
 			// aapt resource value: 0x7f0f0028
 			public const int clip_vertical = 2131689512;
 			
-			// aapt resource value: 0x7f0f0043
-			public const int configView = 2131689539;
+			// aapt resource value: 0x7f0f0048
+			public const int configView = 2131689544;
+			
+			// aapt resource value: 0x7f0f0040
+			public const int container = 2131689536;
+			
+			// aapt resource value: 0x7f0f0041
+			public const int content = 2131689537;
 			
 			// aapt resource value: 0x7f0f0015
 			public const int dark = 2131689493;
@@ -1729,17 +1771,20 @@ namespace WearApp
 			// aapt resource value: 0x7f0f0023
 			public const int dashed = 2131689507;
 			
-			// aapt resource value: 0x7f0f0045
-			public const int dismiss_overlay_button = 2131689541;
+			// aapt resource value: 0x7f0f004a
+			public const int dismiss_overlay_button = 2131689546;
 			
-			// aapt resource value: 0x7f0f0044
-			public const int dismiss_overlay_explain = 2131689540;
+			// aapt resource value: 0x7f0f0049
+			public const int dismiss_overlay_explain = 2131689545;
+			
+			// aapt resource value: 0x7f0f004b
+			public const int emoji = 2131689547;
 			
 			// aapt resource value: 0x7f0f0029
 			public const int end = 2131689513;
 			
-			// aapt resource value: 0x7f0f005c
-			public const int end_padder = 2131689564;
+			// aapt resource value: 0x7f0f0062
+			public const int end_padder = 2131689570;
 			
 			// aapt resource value: 0x7f0f002a
 			public const int fill = 2131689514;
@@ -1756,23 +1801,26 @@ namespace WearApp
 			// aapt resource value: 0x7f0f0034
 			public const int forever = 2131689524;
 			
+			// aapt resource value: 0x7f0f0042
+			public const int fragment_container = 2131689538;
+			
 			// aapt resource value: 0x7f0f001f
 			public const int height = 2131689503;
 			
 			// aapt resource value: 0x7f0f000a
 			public const int hybrid = 2131689482;
 			
-			// aapt resource value: 0x7f0f0057
-			public const int icon = 2131689559;
+			// aapt resource value: 0x7f0f005d
+			public const int icon = 2131689565;
 			
-			// aapt resource value: 0x7f0f005b
-			public const int icon_group = 2131689563;
+			// aapt resource value: 0x7f0f0061
+			public const int icon_group = 2131689569;
 			
 			// aapt resource value: 0x7f0f0011
 			public const int icon_only = 2131689489;
 			
-			// aapt resource value: 0x7f0f0056
-			public const int info = 2131689558;
+			// aapt resource value: 0x7f0f005c
+			public const int info = 2131689564;
 			
 			// aapt resource value: 0x7f0f0035
 			public const int italic = 2131689525;
@@ -1792,8 +1840,8 @@ namespace WearApp
 			// aapt resource value: 0x7f0f0005
 			public const int line3 = 2131689477;
 			
-			// aapt resource value: 0x7f0f004f
-			public const int media_actions = 2131689551;
+			// aapt resource value: 0x7f0f0055
+			public const int media_actions = 2131689557;
 			
 			// aapt resource value: 0x7f0f0030
 			public const int multiPage = 2131689520;
@@ -1801,8 +1849,8 @@ namespace WearApp
 			// aapt resource value: 0x7f0f002e
 			public const int multi_page = 2131689518;
 			
-			// aapt resource value: 0x7f0f007b
-			public const int nested_icon = 2131689595;
+			// aapt resource value: 0x7f0f0081
+			public const int nested_icon = 2131689601;
 			
 			// aapt resource value: 0x7f0f000b
 			public const int none = 2131689483;
@@ -1810,32 +1858,32 @@ namespace WearApp
 			// aapt resource value: 0x7f0f000c
 			public const int normal = 2131689484;
 			
-			// aapt resource value: 0x7f0f0059
-			public const int notification_background = 2131689561;
+			// aapt resource value: 0x7f0f005f
+			public const int notification_background = 2131689567;
 			
-			// aapt resource value: 0x7f0f0052
-			public const int notification_main_column = 2131689554;
+			// aapt resource value: 0x7f0f0058
+			public const int notification_main_column = 2131689560;
 			
-			// aapt resource value: 0x7f0f0051
-			public const int notification_main_column_container = 2131689553;
+			// aapt resource value: 0x7f0f0057
+			public const int notification_main_column_container = 2131689559;
 			
-			// aapt resource value: 0x7f0f007c
-			public const int off = 2131689596;
+			// aapt resource value: 0x7f0f0082
+			public const int off = 2131689602;
 			
-			// aapt resource value: 0x7f0f007d
-			public const int on = 2131689597;
+			// aapt resource value: 0x7f0f0083
+			public const int on = 2131689603;
 			
-			// aapt resource value: 0x7f0f0040
-			public const int parentPanel = 2131689536;
+			// aapt resource value: 0x7f0f0045
+			public const int parentPanel = 2131689541;
 			
 			// aapt resource value: 0x7f0f001a
 			public const int right = 2131689498;
 			
-			// aapt resource value: 0x7f0f0058
-			public const int right_icon = 2131689560;
+			// aapt resource value: 0x7f0f005e
+			public const int right_icon = 2131689566;
 			
-			// aapt resource value: 0x7f0f0053
-			public const int right_side = 2131689555;
+			// aapt resource value: 0x7f0f0059
+			public const int right_side = 2131689561;
 			
 			// aapt resource value: 0x7f0f001d
 			public const int round = 2131689501;
@@ -1864,8 +1912,8 @@ namespace WearApp
 			// aapt resource value: 0x7f0f002d
 			public const int start = 2131689517;
 			
-			// aapt resource value: 0x7f0f004e
-			public const int status_bar_latest_event_content = 2131689550;
+			// aapt resource value: 0x7f0f0054
+			public const int status_bar_latest_event_content = 2131689556;
 			
 			// aapt resource value: 0x7f0f0006
 			public const int tag_transition_group = 2131689478;
@@ -1879,14 +1927,17 @@ namespace WearApp
 			// aapt resource value: 0x7f0f0008
 			public const int text2 = 2131689480;
 			
-			// aapt resource value: 0x7f0f0054
-			public const int time = 2131689556;
+			// aapt resource value: 0x7f0f005a
+			public const int time = 2131689562;
 			
 			// aapt resource value: 0x7f0f0009
 			public const int title = 2131689481;
 			
 			// aapt resource value: 0x7f0f001b
 			public const int top = 2131689499;
+			
+			// aapt resource value: 0x7f0f0043
+			public const int top_navigation_drawer = 2131689539;
 			
 			// aapt resource value: 0x7f0f003b
 			public const int wearable_support_action_drawer_expand_icon = 2131689531;
@@ -1903,50 +1954,50 @@ namespace WearApp
 			// aapt resource value: 0x7f0f003c
 			public const int wearable_support_action_drawer_title = 2131689532;
 			
-			// aapt resource value: 0x7f0f005d
-			public const int wearable_support_confirmation_overlay_image = 2131689565;
-			
-			// aapt resource value: 0x7f0f005e
-			public const int wearable_support_confirmation_overlay_message = 2131689566;
-			
-			// aapt resource value: 0x7f0f0067
-			public const int wearable_support_drawer_view_peek_container = 2131689575;
-			
-			// aapt resource value: 0x7f0f0068
-			public const int wearable_support_drawer_view_peek_icon = 2131689576;
-			
-			// aapt resource value: 0x7f0f005f
-			public const int wearable_support_nav_drawer_icon_0 = 2131689567;
-			
-			// aapt resource value: 0x7f0f0061
-			public const int wearable_support_nav_drawer_icon_1 = 2131689569;
-			
-			// aapt resource value: 0x7f0f0062
-			public const int wearable_support_nav_drawer_icon_2 = 2131689570;
-			
 			// aapt resource value: 0x7f0f0063
-			public const int wearable_support_nav_drawer_icon_3 = 2131689571;
+			public const int wearable_support_confirmation_overlay_image = 2131689571;
 			
 			// aapt resource value: 0x7f0f0064
-			public const int wearable_support_nav_drawer_icon_4 = 2131689572;
+			public const int wearable_support_confirmation_overlay_message = 2131689572;
+			
+			// aapt resource value: 0x7f0f006d
+			public const int wearable_support_drawer_view_peek_container = 2131689581;
+			
+			// aapt resource value: 0x7f0f006e
+			public const int wearable_support_drawer_view_peek_icon = 2131689582;
 			
 			// aapt resource value: 0x7f0f0065
-			public const int wearable_support_nav_drawer_icon_5 = 2131689573;
+			public const int wearable_support_nav_drawer_icon_0 = 2131689573;
+			
+			// aapt resource value: 0x7f0f0067
+			public const int wearable_support_nav_drawer_icon_1 = 2131689575;
+			
+			// aapt resource value: 0x7f0f0068
+			public const int wearable_support_nav_drawer_icon_2 = 2131689576;
+			
+			// aapt resource value: 0x7f0f0069
+			public const int wearable_support_nav_drawer_icon_3 = 2131689577;
+			
+			// aapt resource value: 0x7f0f006a
+			public const int wearable_support_nav_drawer_icon_4 = 2131689578;
+			
+			// aapt resource value: 0x7f0f006b
+			public const int wearable_support_nav_drawer_icon_5 = 2131689579;
+			
+			// aapt resource value: 0x7f0f006c
+			public const int wearable_support_nav_drawer_icon_6 = 2131689580;
 			
 			// aapt resource value: 0x7f0f0066
-			public const int wearable_support_nav_drawer_icon_6 = 2131689574;
+			public const int wearable_support_nav_drawer_text = 2131689574;
 			
-			// aapt resource value: 0x7f0f0060
-			public const int wearable_support_nav_drawer_text = 2131689568;
+			// aapt resource value: 0x7f0f004c
+			public const int wearable_support_navigation_drawer_item_icon = 2131689548;
 			
-			// aapt resource value: 0x7f0f0046
-			public const int wearable_support_navigation_drawer_item_icon = 2131689542;
+			// aapt resource value: 0x7f0f004d
+			public const int wearable_support_navigation_drawer_item_text = 2131689549;
 			
-			// aapt resource value: 0x7f0f0047
-			public const int wearable_support_navigation_drawer_item_text = 2131689543;
-			
-			// aapt resource value: 0x7f0f0048
-			public const int wearable_support_navigation_drawer_page_indicator = 2131689544;
+			// aapt resource value: 0x7f0f004e
+			public const int wearable_support_navigation_drawer_page_indicator = 2131689550;
 			
 			// aapt resource value: 0x7f0f0000
 			public const int wearable_support_navigation_drawer_view_pager = 2131689472;
@@ -1960,59 +2011,59 @@ namespace WearApp
 			// aapt resource value: 0x7f0f0020
 			public const int width = 2131689504;
 			
-			// aapt resource value: 0x7f0f006c
-			public const int ws_action_drawer_expand_icon = 2131689580;
-			
-			// aapt resource value: 0x7f0f0069
-			public const int ws_action_drawer_item_icon = 2131689577;
-			
-			// aapt resource value: 0x7f0f006a
-			public const int ws_action_drawer_item_text = 2131689578;
-			
-			// aapt resource value: 0x7f0f006b
-			public const int ws_action_drawer_peek_action_icon = 2131689579;
-			
-			// aapt resource value: 0x7f0f006d
-			public const int ws_action_drawer_title = 2131689581;
-			
-			// aapt resource value: 0x7f0f0079
-			public const int ws_drawer_view_peek_container = 2131689593;
-			
-			// aapt resource value: 0x7f0f007a
-			public const int ws_drawer_view_peek_icon = 2131689594;
-			
-			// aapt resource value: 0x7f0f0071
-			public const int ws_nav_drawer_icon_0 = 2131689585;
-			
-			// aapt resource value: 0x7f0f0073
-			public const int ws_nav_drawer_icon_1 = 2131689587;
-			
-			// aapt resource value: 0x7f0f0074
-			public const int ws_nav_drawer_icon_2 = 2131689588;
-			
-			// aapt resource value: 0x7f0f0075
-			public const int ws_nav_drawer_icon_3 = 2131689589;
-			
-			// aapt resource value: 0x7f0f0076
-			public const int ws_nav_drawer_icon_4 = 2131689590;
-			
-			// aapt resource value: 0x7f0f0077
-			public const int ws_nav_drawer_icon_5 = 2131689591;
-			
-			// aapt resource value: 0x7f0f0078
-			public const int ws_nav_drawer_icon_6 = 2131689592;
-			
 			// aapt resource value: 0x7f0f0072
-			public const int ws_nav_drawer_text = 2131689586;
-			
-			// aapt resource value: 0x7f0f006e
-			public const int ws_navigation_drawer_item_icon = 2131689582;
+			public const int ws_action_drawer_expand_icon = 2131689586;
 			
 			// aapt resource value: 0x7f0f006f
-			public const int ws_navigation_drawer_item_text = 2131689583;
+			public const int ws_action_drawer_item_icon = 2131689583;
 			
 			// aapt resource value: 0x7f0f0070
-			public const int ws_navigation_drawer_page_indicator = 2131689584;
+			public const int ws_action_drawer_item_text = 2131689584;
+			
+			// aapt resource value: 0x7f0f0071
+			public const int ws_action_drawer_peek_action_icon = 2131689585;
+			
+			// aapt resource value: 0x7f0f0073
+			public const int ws_action_drawer_title = 2131689587;
+			
+			// aapt resource value: 0x7f0f007f
+			public const int ws_drawer_view_peek_container = 2131689599;
+			
+			// aapt resource value: 0x7f0f0080
+			public const int ws_drawer_view_peek_icon = 2131689600;
+			
+			// aapt resource value: 0x7f0f0077
+			public const int ws_nav_drawer_icon_0 = 2131689591;
+			
+			// aapt resource value: 0x7f0f0079
+			public const int ws_nav_drawer_icon_1 = 2131689593;
+			
+			// aapt resource value: 0x7f0f007a
+			public const int ws_nav_drawer_icon_2 = 2131689594;
+			
+			// aapt resource value: 0x7f0f007b
+			public const int ws_nav_drawer_icon_3 = 2131689595;
+			
+			// aapt resource value: 0x7f0f007c
+			public const int ws_nav_drawer_icon_4 = 2131689596;
+			
+			// aapt resource value: 0x7f0f007d
+			public const int ws_nav_drawer_icon_5 = 2131689597;
+			
+			// aapt resource value: 0x7f0f007e
+			public const int ws_nav_drawer_icon_6 = 2131689598;
+			
+			// aapt resource value: 0x7f0f0078
+			public const int ws_nav_drawer_text = 2131689592;
+			
+			// aapt resource value: 0x7f0f0074
+			public const int ws_navigation_drawer_item_icon = 2131689588;
+			
+			// aapt resource value: 0x7f0f0075
+			public const int ws_navigation_drawer_item_text = 2131689589;
+			
+			// aapt resource value: 0x7f0f0076
+			public const int ws_navigation_drawer_page_indicator = 2131689590;
 			
 			// aapt resource value: 0x7f0f0002
 			public const int ws_navigation_drawer_view_pager = 2131689474;
@@ -2117,139 +2168,145 @@ namespace WearApp
 			public const int activity_main = 2130968580;
 			
 			// aapt resource value: 0x7f040005
-			public const int alert_dialog_wearable = 2130968581;
+			public const int activity_main2 = 2130968581;
 			
 			// aapt resource value: 0x7f040006
-			public const int decomposition_config_activity = 2130968582;
+			public const int alert_dialog_wearable = 2130968582;
 			
 			// aapt resource value: 0x7f040007
-			public const int dismiss_overlay = 2130968583;
+			public const int decomposition_config_activity = 2130968583;
 			
 			// aapt resource value: 0x7f040008
-			public const int navigation_drawer_item_view = 2130968584;
+			public const int dismiss_overlay = 2130968584;
 			
 			// aapt resource value: 0x7f040009
-			public const int navigation_drawer_view = 2130968585;
+			public const int fragment_section = 2130968585;
 			
 			// aapt resource value: 0x7f04000a
-			public const int notification_action = 2130968586;
+			public const int navigation_drawer_item_view = 2130968586;
 			
 			// aapt resource value: 0x7f04000b
-			public const int notification_action_tombstone = 2130968587;
+			public const int navigation_drawer_view = 2130968587;
 			
 			// aapt resource value: 0x7f04000c
-			public const int notification_media_action = 2130968588;
+			public const int notification_action = 2130968588;
 			
 			// aapt resource value: 0x7f04000d
-			public const int notification_media_cancel_action = 2130968589;
+			public const int notification_action_tombstone = 2130968589;
 			
 			// aapt resource value: 0x7f04000e
-			public const int notification_template_big_media = 2130968590;
+			public const int notification_media_action = 2130968590;
 			
 			// aapt resource value: 0x7f04000f
-			public const int notification_template_big_media_custom = 2130968591;
+			public const int notification_media_cancel_action = 2130968591;
 			
 			// aapt resource value: 0x7f040010
-			public const int notification_template_big_media_narrow = 2130968592;
+			public const int notification_template_big_media = 2130968592;
 			
 			// aapt resource value: 0x7f040011
-			public const int notification_template_big_media_narrow_custom = 2130968593;
+			public const int notification_template_big_media_custom = 2130968593;
 			
 			// aapt resource value: 0x7f040012
-			public const int notification_template_custom_big = 2130968594;
+			public const int notification_template_big_media_narrow = 2130968594;
 			
 			// aapt resource value: 0x7f040013
-			public const int notification_template_icon_group = 2130968595;
+			public const int notification_template_big_media_narrow_custom = 2130968595;
 			
 			// aapt resource value: 0x7f040014
-			public const int notification_template_lines_media = 2130968596;
+			public const int notification_template_custom_big = 2130968596;
 			
 			// aapt resource value: 0x7f040015
-			public const int notification_template_media = 2130968597;
+			public const int notification_template_icon_group = 2130968597;
 			
 			// aapt resource value: 0x7f040016
-			public const int notification_template_media_custom = 2130968598;
+			public const int notification_template_lines_media = 2130968598;
 			
 			// aapt resource value: 0x7f040017
-			public const int notification_template_part_chronometer = 2130968599;
+			public const int notification_template_media = 2130968599;
 			
 			// aapt resource value: 0x7f040018
-			public const int notification_template_part_time = 2130968600;
+			public const int notification_template_media_custom = 2130968600;
 			
 			// aapt resource value: 0x7f040019
-			public const int overlay_confirmation = 2130968601;
+			public const int notification_template_part_chronometer = 2130968601;
 			
 			// aapt resource value: 0x7f04001a
-			public const int single_page_nav_drawer_1_item = 2130968602;
+			public const int notification_template_part_time = 2130968602;
 			
 			// aapt resource value: 0x7f04001b
-			public const int single_page_nav_drawer_2_item = 2130968603;
+			public const int overlay_confirmation = 2130968603;
 			
 			// aapt resource value: 0x7f04001c
-			public const int single_page_nav_drawer_3_item = 2130968604;
+			public const int single_page_nav_drawer_1_item = 2130968604;
 			
 			// aapt resource value: 0x7f04001d
-			public const int single_page_nav_drawer_4_item = 2130968605;
+			public const int single_page_nav_drawer_2_item = 2130968605;
 			
 			// aapt resource value: 0x7f04001e
-			public const int single_page_nav_drawer_5_item = 2130968606;
+			public const int single_page_nav_drawer_3_item = 2130968606;
 			
 			// aapt resource value: 0x7f04001f
-			public const int single_page_nav_drawer_6_item = 2130968607;
+			public const int single_page_nav_drawer_4_item = 2130968607;
 			
 			// aapt resource value: 0x7f040020
-			public const int single_page_nav_drawer_7_item = 2130968608;
+			public const int single_page_nav_drawer_5_item = 2130968608;
 			
 			// aapt resource value: 0x7f040021
-			public const int single_page_nav_drawer_peek_view = 2130968609;
+			public const int single_page_nav_drawer_6_item = 2130968609;
 			
 			// aapt resource value: 0x7f040022
-			public const int watch_card_content = 2130968610;
+			public const int single_page_nav_drawer_7_item = 2130968610;
 			
 			// aapt resource value: 0x7f040023
-			public const int wearable_drawer_view = 2130968611;
+			public const int single_page_nav_drawer_peek_view = 2130968611;
 			
 			// aapt resource value: 0x7f040024
-			public const int ws_action_drawer_item_view = 2130968612;
+			public const int watch_card_content = 2130968612;
 			
 			// aapt resource value: 0x7f040025
-			public const int ws_action_drawer_peek_view = 2130968613;
+			public const int wearable_drawer_view = 2130968613;
 			
 			// aapt resource value: 0x7f040026
-			public const int ws_action_drawer_title_view = 2130968614;
+			public const int ws_action_drawer_item_view = 2130968614;
 			
 			// aapt resource value: 0x7f040027
-			public const int ws_navigation_drawer_item_view = 2130968615;
+			public const int ws_action_drawer_peek_view = 2130968615;
 			
 			// aapt resource value: 0x7f040028
-			public const int ws_navigation_drawer_view = 2130968616;
+			public const int ws_action_drawer_title_view = 2130968616;
 			
 			// aapt resource value: 0x7f040029
-			public const int ws_single_page_nav_drawer_1_item = 2130968617;
+			public const int ws_navigation_drawer_item_view = 2130968617;
 			
 			// aapt resource value: 0x7f04002a
-			public const int ws_single_page_nav_drawer_2_item = 2130968618;
+			public const int ws_navigation_drawer_view = 2130968618;
 			
 			// aapt resource value: 0x7f04002b
-			public const int ws_single_page_nav_drawer_3_item = 2130968619;
+			public const int ws_single_page_nav_drawer_1_item = 2130968619;
 			
 			// aapt resource value: 0x7f04002c
-			public const int ws_single_page_nav_drawer_4_item = 2130968620;
+			public const int ws_single_page_nav_drawer_2_item = 2130968620;
 			
 			// aapt resource value: 0x7f04002d
-			public const int ws_single_page_nav_drawer_5_item = 2130968621;
+			public const int ws_single_page_nav_drawer_3_item = 2130968621;
 			
 			// aapt resource value: 0x7f04002e
-			public const int ws_single_page_nav_drawer_6_item = 2130968622;
+			public const int ws_single_page_nav_drawer_4_item = 2130968622;
 			
 			// aapt resource value: 0x7f04002f
-			public const int ws_single_page_nav_drawer_7_item = 2130968623;
+			public const int ws_single_page_nav_drawer_5_item = 2130968623;
 			
 			// aapt resource value: 0x7f040030
-			public const int ws_single_page_nav_drawer_peek_view = 2130968624;
+			public const int ws_single_page_nav_drawer_6_item = 2130968624;
 			
 			// aapt resource value: 0x7f040031
-			public const int ws_wearable_drawer_view = 2130968625;
+			public const int ws_single_page_nav_drawer_7_item = 2130968625;
+			
+			// aapt resource value: 0x7f040032
+			public const int ws_single_page_nav_drawer_peek_view = 2130968626;
+			
+			// aapt resource value: 0x7f040033
+			public const int ws_wearable_drawer_view = 2130968627;
 			
 			static Layout()
 			{
@@ -2257,6 +2314,22 @@ namespace WearApp
 			}
 			
 			private Layout()
+			{
+			}
+		}
+		
+		public partial class Menu
+		{
+			
+			// aapt resource value: 0x7f120000
+			public const int action_drawer_menu = 2131886080;
+			
+			static Menu()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Menu()
 			{
 			}
 		}
@@ -2322,6 +2395,18 @@ namespace WearApp
 			
 			// aapt resource value: 0x7f080014
 			public const int a11y_template_range = 2131230740;
+			
+			// aapt resource value: 0x7f080047
+			public const int action_edit = 2131230791;
+			
+			// aapt resource value: 0x7f080048
+			public const int action_edit_todo = 2131230792;
+			
+			// aapt resource value: 0x7f080049
+			public const int action_share = 2131230793;
+			
+			// aapt resource value: 0x7f08004a
+			public const int action_share_todo = 2131230794;
 			
 			// aapt resource value: 0x7f08003e
 			public const int app_name = 2131230782;
@@ -2473,6 +2558,9 @@ namespace WearApp
 			// aapt resource value: 0x7f080034
 			public const int dismiss_overlay_button_label = 2131230772;
 			
+			// aapt resource value: 0x7f080045
+			public const int earth_title = 2131230789;
+			
 			// aapt resource value: 0x7f080000
 			public const int gcm_fallback_notification_channel_label = 2131230720;
 			
@@ -2488,11 +2576,20 @@ namespace WearApp
 			// aapt resource value: 0x7f08003f
 			public const int left_phone_title = 2131230783;
 			
+			// aapt resource value: 0x7f080044
+			public const int moon_title = 2131230788;
+			
 			// aapt resource value: 0x7f080037
 			public const int navigation_drawer_content_description = 2131230775;
 			
+			// aapt resource value: 0x7f080046
+			public const int settings_title = 2131230790;
+			
 			// aapt resource value: 0x7f08003d
 			public const int status_bar_notification_info_overflow = 2131230781;
+			
+			// aapt resource value: 0x7f080043
+			public const int sun_title = 2131230787;
 			
 			// aapt resource value: 0x7f080038
 			public const int time_difference_now = 2131230776;

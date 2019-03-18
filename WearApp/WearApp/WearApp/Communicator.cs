@@ -28,16 +28,13 @@ namespace WearApp
         public Communicator(Context context)
         {
             _context = context;
-                   client = new GoogleApiClient.Builder(context)                
-                .AddApi(WearableClass.API)
-                .Build();
+            client = new GoogleApiClient.Builder(context)
+         .AddApi(WearableClass.API)
+         .Build();
             client.Connect();
-           var capabilitiesTask = WearableClass.CapabilityApi.GetAllCapabilities(client, CapabilityApi.FilterReachable);
-           WearableClass.NodeApi.AddListener(client, this);
 
+            var capabilitiesTask = WearableClass.CapabilityApi.GetAllCapabilities(client, CapabilityApi.FilterReachable);
 
-
-            WearableClass.CapabilityApi.AddLocalCapability(client, capabilityName);
 
             var result = WearableClass.CapabilityApi.GetCapability(client, capabilityName, CapabilityApi.FilterReachable);
 
@@ -80,7 +77,7 @@ namespace WearApp
                     var bytes = Encoding.Default.GetBytes(message);
                     var result = WearableClass.MessageApi.SendMessage(client, node.Id, path, bytes).Await();
                     var success = result.JavaCast<IMessageApiSendMessageResult>().Status.IsSuccess ? "Ok." : "Failed!";
-                    Log.Info("my_log", "Communicator: Sending message " + message + "... " + success);
+                    Log.Info("Spidey", "Communicator: Sending message " + message + "... " + success);
                     // client.Disconnect();
                 }
             });
@@ -99,7 +96,7 @@ namespace WearApp
                     request.DataMap.PutAll(dataMap);
                     var result = WearableClass.DataApi.PutDataItem(client, request.AsPutDataRequest()).Await();
                     var success = result.JavaCast<IDataApiDataItemResult>().Status.IsSuccess ? "Ok." : "Failed!";
-                    Log.Info("my_log", "Communicator: Sending data map " + dataMap + "... " + success);
+                    Log.Info("Spidey", "Communicator: Sending data map " + dataMap + "... " + success);
                 }
                 catch (Exception ex)
                 {
@@ -114,7 +111,7 @@ namespace WearApp
         public void OnMessageReceived(IMessageEvent messageEvent)
         {
             var message = Encoding.Default.GetString(messageEvent.GetData());
-            Log.Info("my_log", "Communicator: Message received \"" + message + "\"");
+            Log.Info("Spidey", "Communicator: Message received \"" + message + "\"");
             MessageReceived(message);
         }
 
@@ -122,7 +119,7 @@ namespace WearApp
         // On data changed we want invoke event
         public void OnDataChanged(DataEventBuffer p0)
         {
-            Log.Info("my_log", "Communicator: Data changed (" + p0.Count + " data events)");
+            Log.Info("Spidey", "Communicator: Data changed (" + p0.Count + " data events)");
             for (var i = 0; i < p0.Count; i++)
             {
                 var dataEvent = p0.Get(i).JavaCast<IDataEvent>();
@@ -137,27 +134,34 @@ namespace WearApp
 
         IList<INode> Nodes()
         {
-            
+
             var result = WearableClass.NodeApi.GetConnectedNodes(client).Await();
             return result.JavaCast<INodeApiGetConnectedNodesResult>().Nodes;
         }
-       
+
         public void OnCapabilityChanged(ICapabilityInfo capabilityInfo)
         {
-            Log.Info("Spidey", "OnCapabilityChanged" + capabilityInfo.Name);
+
         }
 
         public void OnPeerConnected(INode peer)
         {
-            Log.Info("Spidey", "Connected"+ peer.DisplayName + "id:"+peer.Id);
+          //  var sds = WearableClass.CapabilityApi.GetCapability(client, capabilityName,
+
+           // WearableClass.NodeApi.AddListener(client, capabilityName,);
+
+
+
+          //  WearableClass.CapabilityApi.AddLocalCapability(client, capabilityName);
+            Log.Info("Spidey", "Connected" + peer.DisplayName + "id:" + peer.Id);
         }
 
         public void OnPeerDisconnected(INode peer)
         {
             Log.Info("Spidey", "Disconnected" + peer.DisplayName + "id:" + peer.Id);
-          
-        }
-    }
 
-}
+        }
+
+
+    } }
 

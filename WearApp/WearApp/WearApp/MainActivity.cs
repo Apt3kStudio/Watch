@@ -24,6 +24,11 @@ using Android.Gms.Auth.Api;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Android.Graphics;
+using Android.Support.Wearable.View.Drawer;
+using static System.Collections.Specialized.BitVector32;
+using Android.Graphics.Drawables;
+using Java.Lang;
+using Android.Support.Annotation;
 
 namespace WearApp
 {
@@ -31,47 +36,87 @@ namespace WearApp
     public class MainActivity : WearableActivity        
     {
         public int FORGOT_PHONE_NOTIFICATION_ID = 1;
-
+        #region navigation
+        private Section DEFAULT_SECTION = Section.Sun;
+        private WearableNavigationDrawer mWearableNavigationDrawer;
+        private WearableActionDrawer mWearableActionDrawer;
+        #endregion
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);              
-            SetContentView(Resource.Layout.activity_main);
+            SetContentView(Resource.Layout.activity_main2);
 
-            Button btnSoundTrigger = FindViewById<Button>(Resource.Id.SoundTrigger);
-            Button btnFlashTrigger = FindViewById<Button>(Resource.Id.FlashTrigger);
-            Button btnVibTrigger = FindViewById<Button>(Resource.Id.VibTrigger);
-            Communicator cm = new Communicator(this);
+            #region NVD
+            mWearableNavigationDrawer = (WearableNavigationDrawer)FindViewById(Resource.Id.top_navigation_drawer);
+            //mWearableNavigationDrawer.SetAdapter(new NavigationAdapter(this, mWearableNavigationDrawer, mWearableActionDrawer));
+           
+            #endregion
+            SectionFragment f = new SectionFragment();
+          
+            SectionFragment sectionFragment = f.GetSection(DEFAULT_SECTION);
+            var sFFB = this.FragmentManager.BeginTransaction();
+            sFFB.Replace(Resource.Id.fragment_container, sectionFragment);
+            sFFB.Commit();
 
-            btnSoundTrigger.Click += delegate
-            {                                          
-                cm.SendMessage("option1");             
-            };
-            btnFlashTrigger.Click += delegate
+            mWearableActionDrawer = (WearableActionDrawer)FindViewById(Resource.Id.bottom_action_drawer);
+            mWearableNavigationDrawer.SetAdapter(new NavigationAdapter(this, this.FragmentManager, mWearableNavigationDrawer, mWearableActionDrawer));
+            mWearableActionDrawer.MenuItemClick += (m, arg) =>
             {
-                cm.SendMessage("option2");              
+                mWearableActionDrawer.CloseDrawer();
+                switch (arg.Item.ItemId)
+                {
+                    case Resource.Id.action_edit:
+                        Toast.MakeText(this, Resource.String.action_edit_todo, ToastLength.Short).Show();
+                        //return true;
+                        break;
+                    case Resource.Id.action_share:
+                        Toast.MakeText(this, Resource.String.action_share_todo, ToastLength.Short).Show();
+                        // return true;
+                        break;
+                }
+            
+                // return false;
             };
-            btnVibTrigger.Click += delegate
-            {
-                cm.SendMessage("option3");                
-            };
+
+
+
+        Communicator cm = new Communicator(this);
+
+            //btnSoundTrigger.Click += delegate
+            //{                                          
+            //    cm.SendMessage("option1");             
+            //};
+            //btnFlashTrigger.Click += delegate
+            //{
+            //    cm.SendMessage("option2");              
+            //};
+            //btnVibTrigger.Click += delegate
+            //{
+            //    cm.SendMessage("option3");                
+            //};
             SetAmbientEnabled();
+        }
+        public bool OnMenuItemClick(IMenuItem menuItem)
+        {
+            mWearableActionDrawer.CloseDrawer();
+            switch (menuItem.ItemId)
+            {
+                case Resource.Id.action_edit:
+                    Toast.MakeText(this, Resource.String.action_edit_todo, ToastLength.Short).Show();
+                    return true;
+                case Resource.Id.action_share:
+                    Toast.MakeText(this, Resource.String.action_share_todo, ToastLength.Short).Show();
+                    return true;
+            }
+            return false;
         }
         private void Cm_DataReceived(DataMap obj)
         {
-            throw new NotImplementedException();
+            
         }
         public void OnConnected(Bundle connectionHint)
         {
-            try
-            {
-                //google_api_client.BlockingConnect(CONNECTION_TIME_OUT_MS, TimeUnit.Milliseconds);
-              // RunningOnBackground();
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
+          
         } 
         public void OnConnectionSuspended(int cause)
         {
@@ -83,6 +128,10 @@ namespace WearApp
            
         }
     }
+
+
+   
+   
 }
 
 
