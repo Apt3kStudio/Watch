@@ -100,10 +100,32 @@ namespace WearApp
                 }
                 catch (Exception ex)
                 {
-
                     throw;
                 }
             });
+        }
+
+        public void SetTriggerEvent(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    //First Action
+                    SendMessage("option1");
+                    break;
+                case 1:
+                    //First Action
+                    SendMessage("option2");
+                    break;
+                case 2:
+                    //First Action
+                    SendMessage("option3");
+                    break;
+                case 3:
+                    //First Action
+                    SendMessage("settings");
+                    break;                   
+            }
         }
 
         // Implementing IMessageApiMessageListener interface

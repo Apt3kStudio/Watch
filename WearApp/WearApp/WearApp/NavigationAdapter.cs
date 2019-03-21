@@ -16,11 +16,11 @@ namespace WearApp
 {
     public class NavigationAdapter : WearableNavigationDrawer.WearableNavigationDrawerAdapter
     {
-
+        
         private Context mContext;
         private Section mCurrentSection = Section.Sun;
         private readonly FragmentManager _fragmentManager;
-
+        private Communicator _Communicator;
         public virtual FragmentManager GetFragmentManager()
         {
             return _fragmentManager;
@@ -32,13 +32,13 @@ namespace WearApp
         public override int Count => 4;
 
         //  public NavigationAdapter(Context context, WearableNavigationDrawer mWearableNavigationDrawer1, WearableActionDrawer mWearableActionDrawer1)
-        public NavigationAdapter(Context context, FragmentManager fragmentManager, WearableNavigationDrawer wnavDwe, WearableActionDrawer wActionDwr )
+        public NavigationAdapter(Context context, FragmentManager fragmentManager, WearableNavigationDrawer wnavDwe, WearableActionDrawer wActionDwr, Communicator objCommunicator )
         {
             mContext = context;
             _fragmentManager = fragmentManager;
             mWearableNavigationDrawer = wnavDwe;
             mWearableActionDrawer = wActionDwr;
-
+            _Communicator = objCommunicator;
         }
 
 
@@ -58,7 +58,7 @@ namespace WearApp
         public override void OnItemSelected(int index)
         {
             Section selectedSection = getSection(index);
-
+            _Communicator.SetTriggerEvent(index);
             // Only replace the fragment if the section is changing.
             if (selectedSection == mCurrentSection)
             {
@@ -67,8 +67,7 @@ namespace WearApp
             mCurrentSection = selectedSection;
             #region //url https://docs.microsoft.com/en-us/xamarin/android/platform/fragments/managing-fragments
             SectionFragment f = new SectionFragment();
-            SectionFragment sectionFragment = f.GetSection(selectedSection);
-
+            SectionFragment sectionFragment = f.GetSection(selectedSection);            
             GetFragmentManager().BeginTransaction()
             .Replace(Resource.Id.fragment_container, sectionFragment)
             .Commit();

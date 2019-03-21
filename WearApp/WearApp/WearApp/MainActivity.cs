@@ -52,14 +52,15 @@ namespace WearApp
            
             #endregion
             SectionFragment f = new SectionFragment();
-          
-            SectionFragment sectionFragment = f.GetSection(DEFAULT_SECTION);
+            Communicator objCommunicator = new Communicator(this);
+
+        SectionFragment sectionFragment = f.GetSection(DEFAULT_SECTION);
             var sFFB = this.FragmentManager.BeginTransaction();
             sFFB.Replace(Resource.Id.fragment_container, sectionFragment);
             sFFB.Commit();
 
             mWearableActionDrawer = (WearableActionDrawer)FindViewById(Resource.Id.bottom_action_drawer);
-            mWearableNavigationDrawer.SetAdapter(new NavigationAdapter(this, this.FragmentManager, mWearableNavigationDrawer, mWearableActionDrawer));
+            mWearableNavigationDrawer.SetAdapter(new NavigationAdapter(this, this.FragmentManager, mWearableNavigationDrawer, mWearableActionDrawer,objCommunicator));
             mWearableActionDrawer.MenuItemClick += (m, arg) =>
             {
                 mWearableActionDrawer.CloseDrawer();
