@@ -14,14 +14,16 @@ using System.Threading.Tasks;
 using System.Text;
 using System.Collections.Generic;
 using Android.Gms.Gcm;
+using Plugin.Vibrate;
+using Xamarin.Essentials;
 
 namespace WearApp
 {
 
-    public class Communicator : Java.Lang.Object, IMessageApiMessageListener, IDataApiDataListener, ICapabilityApiCapabilityListener, INodeApiNodeListener
+    public class Communicator : Java.Lang.Object, IMessageApiMessageListener, IDataApiDataListener, ICapabilityApiCapabilityListener
     {
         readonly GoogleApiClient client;
-        const string path = "/communicator";
+        const string path = "/my_capability";
         string capabilityName = "my_capability";
         // Initializing GoogleApiClient
         Context _context;
@@ -32,11 +34,13 @@ namespace WearApp
          .AddApi(WearableClass.API)
          .Build();
             client.Connect();
+           
+            
 
-            var capabilitiesTask = WearableClass.CapabilityApi.GetAllCapabilities(client, CapabilityApi.FilterReachable);
+            //var capabilitiesTask = WearableClass.CapabilityApi.GetAllCapabilities(client, CapabilityApi.FilterReachable);
 
 
-            var result = WearableClass.CapabilityApi.GetCapability(client, capabilityName, CapabilityApi.FilterReachable);
+            //var result = WearableClass.CapabilityApi.GetCapability(client, capabilityName, CapabilityApi.FilterReachable);
 
         }
 
@@ -47,10 +51,8 @@ namespace WearApp
             {
                 client.Connect();
                 WearableClass.MessageApi.AddListener(client, this);
-                WearableClass.DataApi.AddListener(client, this);
-                WearableClass.CapabilityApi.AddLocalCapability(client, capabilityName);
-
-                var result = WearableClass.CapabilityApi.GetCapability(client, capabilityName, CapabilityApi.FilterReachable);
+                WearableClass.DataApi.AddListener(client, this);                
+                WearableClass.CapabilityApi.AddCapabilityListener(client,this, capabilityName);
             }
         }
 
@@ -59,9 +61,9 @@ namespace WearApp
         {
             if (client != null && client.IsConnected)
             {
-                client.Disconnect();
-                WearableClass.MessageApi.RemoveListener(client, this);
-                WearableClass.DataApi.RemoveListener(client, this);
+                //client.Disconnect();
+                //WearableClass.MessageApi.RemoveListener(client, this);
+                //WearableClass.DataApi.RemoveListener(client, this);
             }
         }
 
@@ -78,7 +80,7 @@ namespace WearApp
                     var result = WearableClass.MessageApi.SendMessage(client, node.Id, path, bytes).Await();
                     var success = result.JavaCast<IMessageApiSendMessageResult>().Status.IsSuccess ? "Ok." : "Failed!";
                     Log.Info("Spidey", "Communicator: Sending message " + message + "... " + success);
-                    // client.Disconnect();
+                   // client.Disconnect();
                 }
             });
         }
@@ -112,6 +114,8 @@ namespace WearApp
                 case 0:
                     //First Action
                     SendMessage("option1");
+                    var v = CrossVibrate.Current;
+                    v.Vibration(TimeSpan.FromSeconds(1)); // 1 second vibration
                     break;
                 case 1:
                     //First Action
@@ -149,7 +153,10 @@ namespace WearApp
                     DataReceived(DataMapItem.FromDataItem(dataEvent.DataItem).DataMap);
             }
         }
+        public void OnConnected(Bundle connectionHint)
+        {
 
+        }
         // Events for incoming message or update data
         public event Action<string> MessageReceived = delegate { };
         public event Action<DataMap> DataReceived = delegate { };
@@ -163,26 +170,42 @@ namespace WearApp
 
         public void OnCapabilityChanged(ICapabilityInfo capabilityInfo)
         {
+            string isVibrate = "";
+            try
+            {
 
+                Vibration.Vibrate();
+                var duration = TimeSpan.FromSeconds(20);
+                Vibration.Vibrate(duration);
+                isVibrate = "Success";
+            }
+            catch (FeatureNotSupportedException ex)
+            {
+                isVibrate = "Not Supported";
+            }
+            catch (System.Exception ex)
+            {
+                isVibrate = "Error";
+            }
         }
 
-        public void OnPeerConnected(INode peer)
-        {
-          //  var sds = WearableClass.CapabilityApi.GetCapability(client, capabilityName,
+        //public void OnPeerConnected(INode peer)
+        //{
+        //    var sds = WearableClass.CapabilityApi.GetCapability(client, capabilityName, CapabilityApi.FilterReachable);
 
-           // WearableClass.NodeApi.AddListener(client, capabilityName,);
+        //   // WearableClass.NodeApi.AddListener(client, capabilityName,);
 
 
 
-          //  WearableClass.CapabilityApi.AddLocalCapability(client, capabilityName);
-            Log.Info("Spidey", "Connected" + peer.DisplayName + "id:" + peer.Id);
-        }
+        //    //  WearableClass.CapabilityApi.AddLocalCapability(client, capabilityName);
+        //    Log.Info("Spidey", "Connected" + peer.DisplayName + "id:" + peer.Id);
+        //}
 
-        public void OnPeerDisconnected(INode peer)
-        {
-            Log.Info("Spidey", "Disconnected" + peer.DisplayName + "id:" + peer.Id);
+        //public void OnPeerDisconnected(INode peer)
+        //{
+        //    Log.Info("Spidey", "Disconnected" + peer.DisplayName + "id:" + peer.Id);
 
-        }
+        //}
 
 
     } }
