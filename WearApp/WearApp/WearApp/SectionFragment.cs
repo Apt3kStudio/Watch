@@ -19,7 +19,7 @@ using Java.IO;
 
 namespace WearApp
 {
-    public class SectionFragment : Fragment
+    public class SectionFragment : Fragment, View.IOnClickListener
     {
 
         public SectionFragment GetSection(Section section)
@@ -75,6 +75,11 @@ namespace WearApp
             // return inflater.Inflate(Resource.Layout.YourFragment, container, false);
             
             View view = inflater.Inflate(Resource.Layout.fragment_section, container, false);
+            view.SetOnClickListener(this);
+
+
+                      
+
             mEmojiView = (ImageView)view.FindViewById(Resource.Id.emoji);
             mTitleView = (TextView)view.FindViewById(Resource.Id.title);
             #region we might need this, idk yet
@@ -92,10 +97,10 @@ namespace WearApp
             //return base.OnCreateView(inflater, container, savedInstanceState);
         }
 
-
-     
-     
-      
+        public void OnClick(View v)
+        {
+          //  Toast.MakeText(this, Resource.String.action_share_todo, ToastLength.Short).Show();
+        }
     }
     #region dr
     public class Section:Java.Lang.Object, ISerializable

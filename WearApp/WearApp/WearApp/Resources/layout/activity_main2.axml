@@ -39,7 +39,6 @@
         android:id="@+id/top_navigation_drawer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-		app:navigation_style="single_page"
 	/>
 
     <android.support.wearable.view.drawer.WearableActionDrawer
