@@ -29,13 +29,22 @@ namespace WearApp
         Context _context;
         public Communicator(Context context)
         {
-            _context = context;
+            try
+            {
+
+            _context = context; 
             client = new GoogleApiClient.Builder(context)
-         .AddApi(WearableClass.API)
-         .Build();
+            .AddApi(WearableClass.API)
+            .Build();
             client.Connect();
-           
-            
+
+            }
+            catch (Exception)
+            {
+
+             //   throw;
+            }
+
 
             //var capabilitiesTask = WearableClass.CapabilityApi.GetAllCapabilities(client, CapabilityApi.FilterReachable);
 

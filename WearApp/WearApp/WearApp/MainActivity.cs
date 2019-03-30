@@ -35,7 +35,7 @@ using Xamarin.Essentials;
 namespace WearApp
 {
     [Activity(Label = "@string/app_name", MainLauncher = true)]
-    public class MainActivity : WearableActivity        
+    public class MainActivity : WearableActivity,View.IOnCreateContextMenuListener     
     {
         public int FORGOT_PHONE_NOTIFICATION_ID = 1;
         Communicator objCommunicator;
@@ -79,8 +79,9 @@ namespace WearApp
                 //v.Vibration(TimeSpan.FromSeconds(1)); // 1 second vibration
             };
 
-        SectionFragment sectionFragment = f.GetSection(DEFAULT_SECTION);
+            SectionFragment sectionFragment = f.GetSection(DEFAULT_SECTION);
             var sFFB = this.FragmentManager.BeginTransaction();
+            sectionFragment.OnClick(f.View);
             sFFB.Replace(Resource.Id.fragment_container, sectionFragment);
             sFFB.Commit();
 
@@ -103,7 +104,6 @@ namespace WearApp
             
                 // return false;
             };
-
             SetAmbientEnabled();
         }
         public bool OnMenuItemClick(IMenuItem menuItem)
@@ -152,6 +152,7 @@ namespace WearApp
         {
            
         }
+        
     }
 
 

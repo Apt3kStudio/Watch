@@ -19,7 +19,7 @@ using Java.IO;
 
 namespace WearApp
 {
-    public class SectionFragment : Fragment, View.IOnClickListener
+    public class SectionFragment : Fragment, View.IOnClickListener, View.IOnContextClickListener
     {
 
         public SectionFragment GetSection(Section section)
@@ -31,6 +31,7 @@ namespace WearApp
             var cvc = (ISerializable)section;
             arguments.PutSerializable(EXTRA_SECTION, cvc);
             newSection.Arguments = arguments;
+        
             return newSection;
         }
         // Convert an object to a byte array
@@ -75,31 +76,31 @@ namespace WearApp
             // return inflater.Inflate(Resource.Layout.YourFragment, container, false);
             
             View view = inflater.Inflate(Resource.Layout.fragment_section, container, false);
-            view.SetOnClickListener(this);
-
-
-                      
+           
 
             mEmojiView = (ImageView)view.FindViewById(Resource.Id.emoji);
             mTitleView = (TextView)view.FindViewById(Resource.Id.title);
             #region we might need this, idk yet
-            //if (GetArguments() != null)
-            //{
-            //    mSection = (Section)getArguments().getSerializable(EXTRA_SECTION);
-            //    Drawable imageDrawable = ContextCompat.GetDrawable(GetContext(), mSection.drawableRes);
-            //    mEmojiView.SetImageDrawable(imageDrawable);
-            //    mTitleView.SetText(GetResources().getString(mSection.titleRes));
-            //}
+            if (Arguments != null)
+            {
+                mSection = (Section)Arguments.GetSerializable(EXTRA_SECTION);
+                Drawable imageDrawable = ContextCompat.GetDrawable(Context, mSection.drawableRes);
+                mEmojiView.SetImageDrawable(imageDrawable);
+                mTitleView.SetText(mSection.titleRes);
+            }
             #endregion
           
             return view;
-
-            //return base.OnCreateView(inflater, container, savedInstanceState);
         }
 
         public void OnClick(View v)
         {
           //  Toast.MakeText(this, Resource.String.action_share_todo, ToastLength.Short).Show();
+        }
+
+        public bool OnContextClick(View v)
+        {
+            return true;
         }
     }
     #region dr
