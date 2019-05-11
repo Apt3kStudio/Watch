@@ -40,7 +40,7 @@ namespace WearApp
         public int FORGOT_PHONE_NOTIFICATION_ID = 1;
         Communicator objCommunicator;
         #region navigation
-        private Section DEFAULT_SECTION = Section.Sun;
+        private Section DEFAULT_SECTION = Section.Vibrate;
         private WearableNavigationDrawer mWearableNavigationDrawer;
         private WearableActionDrawer mWearableActionDrawer;
         #endregion

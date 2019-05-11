@@ -18,7 +18,7 @@ namespace WearApp
     {
         
         private Context mContext;
-        private Section mCurrentSection = Section.Sun;
+        private Section mCurrentSection = Section.Vibrate;
         private readonly FragmentManager _fragmentManager;
         private Communicator _Communicator;
         public virtual FragmentManager GetFragmentManager()

@@ -108,17 +108,17 @@ namespace WearApp
     {
         public int titleRes;
         public int drawableRes;
-        public static Section Sun = new Section(Resource.String.sun_title, Resource.Drawable.ic_sun_black_24dp);
-        public static Section Moon = new Section(Resource.String.moon_title, Resource.Drawable.ic_moon_black_24dp);
-        public static Section Earth = new Section(Resource.String.earth_title, Resource.Drawable.ic_earth_black_24dp);
+        public static Section Vibrate = new Section(Resource.String.sun_title, Resource.Drawable.vibrate);
+        public static Section Flash = new Section(Resource.String.moon_title, Resource.Drawable.flash);
+        public static Section Sound = new Section(Resource.String.earth_title, Resource.Drawable.sound);
         public static Section Settings = new Section(Resource.String.settings_title, Resource.Drawable.ic_settings_black_24dp);
         public static IEnumerable<Section> Values
         {
             get
             {
-                yield return Sun;
-                yield return Moon;
-                yield return Earth;
+                yield return Vibrate;
+                yield return Flash;
+                yield return Sound;
                 yield return Settings;
 
             }
