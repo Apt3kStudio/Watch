@@ -19,7 +19,7 @@ using Java.IO;
 
 namespace WearApp
 {
-    public class SectionFragment : Fragment
+    public class SectionFragment : Fragment, View.IOnClickListener, View.IOnContextClickListener
     {
 
         public SectionFragment GetSection(Section section)
@@ -31,6 +31,7 @@ namespace WearApp
             var cvc = (ISerializable)section;
             arguments.PutSerializable(EXTRA_SECTION, cvc);
             newSection.Arguments = arguments;
+        
             return newSection;
         }
         // Convert an object to a byte array
@@ -75,44 +76,49 @@ namespace WearApp
             // return inflater.Inflate(Resource.Layout.YourFragment, container, false);
             
             View view = inflater.Inflate(Resource.Layout.fragment_section, container, false);
+           
+
             mEmojiView = (ImageView)view.FindViewById(Resource.Id.emoji);
             mTitleView = (TextView)view.FindViewById(Resource.Id.title);
             #region we might need this, idk yet
-            //if (GetArguments() != null)
-            //{
-            //    mSection = (Section)getArguments().getSerializable(EXTRA_SECTION);
-            //    Drawable imageDrawable = ContextCompat.GetDrawable(GetContext(), mSection.drawableRes);
-            //    mEmojiView.SetImageDrawable(imageDrawable);
-            //    mTitleView.SetText(GetResources().getString(mSection.titleRes));
-            //}
+            if (Arguments != null)
+            {
+                mSection = (Section)Arguments.GetSerializable(EXTRA_SECTION);
+                Drawable imageDrawable = ContextCompat.GetDrawable(Context, mSection.drawableRes);
+                mEmojiView.SetImageDrawable(imageDrawable);
+                mTitleView.SetText(mSection.titleRes);
+            }
             #endregion
           
             return view;
-
-            //return base.OnCreateView(inflater, container, savedInstanceState);
         }
 
+        public void OnClick(View v)
+        {
+          //  Toast.MakeText(this, Resource.String.action_share_todo, ToastLength.Short).Show();
+        }
 
-     
-     
-      
+        public bool OnContextClick(View v)
+        {
+            return true;
+        }
     }
     #region dr
     public class Section:Java.Lang.Object, ISerializable
     {
         public int titleRes;
         public int drawableRes;
-        public static Section Sun = new Section(Resource.String.sun_title, Resource.Drawable.ic_sun_black_24dp);
-        public static Section Moon = new Section(Resource.String.moon_title, Resource.Drawable.ic_moon_black_24dp);
-        public static Section Earth = new Section(Resource.String.earth_title, Resource.Drawable.ic_earth_black_24dp);
+        public static Section Vibrate = new Section(Resource.String.sun_title, Resource.Drawable.vibrate);
+        public static Section Flash = new Section(Resource.String.moon_title, Resource.Drawable.flash);
+        public static Section Sound = new Section(Resource.String.earth_title, Resource.Drawable.sound);
         public static Section Settings = new Section(Resource.String.settings_title, Resource.Drawable.ic_settings_black_24dp);
         public static IEnumerable<Section> Values
         {
             get
             {
-                yield return Sun;
-                yield return Moon;
-                yield return Earth;
+                yield return Vibrate;
+                yield return Flash;
+                yield return Sound;
                 yield return Settings;
 
             }

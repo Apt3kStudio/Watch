@@ -29,15 +29,18 @@ using static System.Collections.Specialized.BitVector32;
 using Android.Graphics.Drawables;
 using Java.Lang;
 using Android.Support.Annotation;
+using Plugin.Vibrate;
+using Xamarin.Essentials;
 
 namespace WearApp
 {
     [Activity(Label = "@string/app_name", MainLauncher = true)]
-    public class MainActivity : WearableActivity        
+    public class MainActivity : WearableActivity,View.IOnCreateContextMenuListener     
     {
         public int FORGOT_PHONE_NOTIFICATION_ID = 1;
+        Communicator objCommunicator;
         #region navigation
-        private Section DEFAULT_SECTION = Section.Sun;
+        private Section DEFAULT_SECTION = Section.Vibrate;
         private WearableNavigationDrawer mWearableNavigationDrawer;
         private WearableActionDrawer mWearableActionDrawer;
         #endregion
@@ -52,14 +55,38 @@ namespace WearApp
            
             #endregion
             SectionFragment f = new SectionFragment();
-          
+            objCommunicator = new Communicator(this);
+            objCommunicator.MessageReceived += delegate
+            {
+                string isVibrate = "";
+                try
+                {
+
+                    Vibration.Vibrate();
+                    var duration = TimeSpan.FromSeconds(20);
+                    Vibration.Vibrate(duration);
+                    isVibrate = "Success";
+                }
+                catch (FeatureNotSupportedException ex)
+                {
+                    isVibrate = "Not Supported";
+                }
+                catch (System.Exception ex)
+                {
+                    isVibrate = "Error";
+                }
+               // var v = CrossVibrate.Current;
+                //v.Vibration(TimeSpan.FromSeconds(1)); // 1 second vibration
+            };
+
             SectionFragment sectionFragment = f.GetSection(DEFAULT_SECTION);
             var sFFB = this.FragmentManager.BeginTransaction();
+            sectionFragment.OnClick(f.View);
             sFFB.Replace(Resource.Id.fragment_container, sectionFragment);
             sFFB.Commit();
 
             mWearableActionDrawer = (WearableActionDrawer)FindViewById(Resource.Id.bottom_action_drawer);
-            mWearableNavigationDrawer.SetAdapter(new NavigationAdapter(this, this.FragmentManager, mWearableNavigationDrawer, mWearableActionDrawer));
+            mWearableNavigationDrawer.SetAdapter(new NavigationAdapter(this, this.FragmentManager, mWearableNavigationDrawer, mWearableActionDrawer,objCommunicator));
             mWearableActionDrawer.MenuItemClick += (m, arg) =>
             {
                 mWearableActionDrawer.CloseDrawer();
@@ -77,23 +104,6 @@ namespace WearApp
             
                 // return false;
             };
-
-
-
-        Communicator cm = new Communicator(this);
-
-            //btnSoundTrigger.Click += delegate
-            //{                                          
-            //    cm.SendMessage("option1");             
-            //};
-            //btnFlashTrigger.Click += delegate
-            //{
-            //    cm.SendMessage("option2");              
-            //};
-            //btnVibTrigger.Click += delegate
-            //{
-            //    cm.SendMessage("option3");                
-            //};
             SetAmbientEnabled();
         }
         public bool OnMenuItemClick(IMenuItem menuItem)
@@ -110,6 +120,21 @@ namespace WearApp
             }
             return false;
         }
+        #region DO NOT remove
+        protected override void OnResume()
+        {
+            base.OnResume();
+
+            objCommunicator.Resume(); // register listeners 
+        }      
+
+        protected override void OnPause()
+        {
+            objCommunicator.Pause();
+
+            base.OnPause();
+        }
+        #endregion
         private void Cm_DataReceived(DataMap obj)
         {
             
@@ -127,6 +152,7 @@ namespace WearApp
         {
            
         }
+        
     }
 
 
